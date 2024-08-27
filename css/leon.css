@@ -2,6 +2,8 @@
 :root {
     --main-color: #10cab7;
     --secondary-color: #2c4755;
+    --section-padding: 60px;
+    --section-background: #f6f6f6;
 }
 /* start Globale Rules */
 *{
@@ -174,9 +176,9 @@ body {
 
 /* Start Features */
 .features {
-    padding-top: 60px;
-    padding-bottom: 60px;
-    background-color: #f6f6f6;
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
 }
 .features .container {
     display: grid;
@@ -202,8 +204,8 @@ body {
 /* End Features */
 /* Start Services */
 .services {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding-top: var(--section-padding);
+    padding-bottom: var(--section-padding);
 }
 .services .services-content {
     display: grid;
@@ -262,4 +264,119 @@ body {
 }
 
 /* End Services */
+/* Start Portfolio */
+.portfolio {
+    padding: var(--section-padding);
+    padding-bottom: var(--section-padding);
+    background-color: var(--section-background);
+}
+.portfolio .portfolio-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(300px, 1fr));
+    grid-gap: 30px;
+    margin-top: 80px;
+}
+.portfolio .portfolio-content .card {
+    background-color: white;
+    overflow: hidden; /* Important pour éviter que l'image dépasse de la carte */
+}
+
+.portfolio .portfolio-content .card img {
+    width: 100%; /* L'image prend la largeur maximale de la carte */
+    height: 200px; /* Hauteur fixe pour toutes les images */
+    object-fit: cover; /* Recadre l'image pour couvrir toute la zone sans déformer */
+    display: block; /* Supprime les espaces blancs causés par les images en inline-block */
+}
+
+.portfolio .portfolio-content .card .info {
+    padding: 20px;
+}
+.portfolio .portfolio-content .card .info h3 {
+    margin: 0;
+}
+.portfolio .portfolio-content .card .info p {
+   color: #777;
+   line-height: 1.6;
+   margin-bottom: 0;
+}
+/* End Portfolio */
+
+/*Start about*/
+.about {
+    padding-top: var(--section-padding);
+    padding-bottom: calc(var(--section-padding) + 60px);
+}
+.about .about-content {
+    margin-top: 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+@media (max-width: 991px) {
+    .about .about-content {
+        flex-direction: column;
+        text-align: center;
+    } 
+}
+.about .about-content .image {
+    position: relative;
+    width: 250px;
+    height: 375px;
+}
+@media (max-width: 991px) {
+    .about .about-content .image{
+        margin: 0 auto 60px;
+    }
+}
+.about .about-content .image::before {
+    content: "";
+    position: absolute;
+    background-color: #ebeced;
+    width: 100px;
+    height: calc(100% + 80px);
+    top: -40px;
+    left: -20px;
+    z-index: -1;
+}
+.about .about-content .image::after {
+    top: -40px;
+    content: "";
+    position: absolute;
+    width: 120px;
+    height: 300px;
+    border-left: 80px solid var(--main-color);
+    border-bottom: 80px solid var(--main-color);
+    z-index: -1;
+    right: -150px;
+
+}
+@media (max-width: 991px) {
+    .about .about-content .image::before ,
+    .about .about-content .image::after {
+        display: none;
+    }
+}
+.about .about-content .image img {
+    max-width: 100%;
+}
+
+.about .about-content .text {
+    flex-basis: calc(100% - 500px);
+}
+.about .about-content .text p:first-of-type {
+    font-weight: bold;
+    line-height: 2;
+    margin-bottom: 50px;
+}
+.about .about-content .text hr {
+    width: 50%;
+    display: inline-block;
+    border-color: var(--main-color);
+}
+.about .about-content .text p:last-of-type {
+    line-height: 2;
+    color: #777;
+}
+
+/*end about*/
 
